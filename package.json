@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node backend/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,10 +19,12 @@
   },
   "homepage": "https://github.com/aantenberg/197FinalProj#readme",
   "dependencies": {
+    "axios": "^0.26.1",
+    "babel-eslint": "^10.1.0",
+    "concurrently": "^7.1.0",
+    "cookie-session": "^2.0.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.2.0",
-    "babel-eslint": "^10.1.0",
-    "axios": "^0.26.1",
     "express": "^4.17.3",
     "mongoose": "^6.2.10",
     "nodemon": "^2.0.15",
