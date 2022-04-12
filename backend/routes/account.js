@@ -9,7 +9,7 @@ router.post('/signup', async (req, res, next) => {
   const { body } = req
   const { username, password } = body
   try {
-    await User.create({ username, password })
+    await User.create({ username, password, publicSchedule: false })
     req.session.username = username
     res.send('user creation was successful')
     next()
