@@ -1,0 +1,75 @@
+#card {
+  background-color: white;
+  margin: 1rem auto;
+  border-collapse: separate; 
+  border-radius: 8px !important;
+  padding: 20px;
+  width: 40%;
+  box-shadow: rgb(0 0 0 / 30%) 0px 1px 18px;
+}
+
+.grey-border {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px 10px;
+  border: 1px solid #CCCCCC;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.link {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.cw-head {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  padding: 40px 30px 20px 40px
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+}
+
+.correct-padding {
+  padding: 20px;
+  margin: 20px;
+  max-height: 800px;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.my-modal {
+  background-color: white;
+  width: 600px;
+  max-width: 100%;
+  padding: 30px 50px;
+  border-radius: 5px
+}
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.write-area {
+  margin: 0px 0px 20px 0px;
+  padding: 5px
+}
+
+.purple-btn {
+  background-color: blueviolet !important; 
+  color: white !important;
+  font-weight: bold !important
+}
