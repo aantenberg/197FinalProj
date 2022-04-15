@@ -9,7 +9,9 @@ router.post('/signup', async (req, res, next) => {
   const { body } = req
   const { username, password } = body
   try {
-    await User.create({ username, password, publicSchedule: false })
+    await User.create({
+      username, password, publicSchedule: false, schedule: [],
+    })
     req.session.username = username
     res.send('user creation was successful')
     next()
@@ -48,6 +50,44 @@ router.post('/logout', isAuthenticated, async (req, res, next) => {
 
 router.get('/username', async (req, res) => {
   res.json({ name: req.session.username })
+})
+
+// router.post('/addClass', isAuthenticated, async (req, res, next) => {
+//   const { body } = req
+//   const { classToAdd } = body
+//   try {
+//     await User.updateOne({ username: req.session.username }, { $push: { schedule: classToAdd } })
+//     res.send(`class ${classToAdd.className} added to ${req.session.username}'s schedule!`)
+//   } catch (e) {
+//     next(e)
+//   }
+// })
+
+// router.get('/getClasses', isAuthenticated, async (req, res, next) => {
+//   try {
+//     const user = await User.findOne({ username: req.session.username })
+//     const { schedule } = user
+//     res.json(schedule)
+//   } catch (e) {
+//     next(e)
+//   }
+// })
+
+// router.post('/clearClasses', isAuthenticated, async (req, res, next) => {
+//   try {
+//     await User.updateOne({ username: req.session.username }, { schedule: [] })
+//     res.send('classes cleared')
+//   } catch (e) {
+//     next(e)
+//   }
+// })
+
+router.get('/isloggedin', async (req, res) => {
+  if (req.session.username !== undefined) {
+    res.json({ loggedIn: true })
+  } else {
+    res.json({ loggedIn: false })
+  }
 })
 
 module.exports = router

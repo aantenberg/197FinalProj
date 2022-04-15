@@ -1,11 +1,32 @@
 #card {
-  background-color: white;
+  background-color: #282828;
   margin: 1rem auto;
   border-collapse: separate; 
   border-radius: 8px !important;
   padding: 20px;
-  width: 40%;
-  box-shadow: rgb(0 0 0 / 30%) 0px 1px 18px;
+  width: 95%;
+}
+
+#home {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+}
+
+#header {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+}
+
+.center-vertically {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  min-height: 450px;
 }
 
 .grey-border {
@@ -14,19 +35,13 @@
   padding: 10px 10px;
   border: 1px solid #CCCCCC;
   border-radius: 10px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 .link {
-  display: inline-flex;
-  flex-direction: row;
-}
-
-.cw-head {
-  background-color: white;
-  display: grid;
-  grid-template-columns: 5fr 2fr;
-  padding: 40px 30px 20px 40px
+  display: inline-flex !important;
+  flex-direction: row !important;
 }
 
 .container {
@@ -45,7 +60,7 @@
 }
 
 .my-modal {
-  background-color: white;
+  background-color: rgb(40, 40, 40);
   width: 600px;
   max-width: 100%;
   padding: 30px 50px;
@@ -65,11 +80,13 @@
 
 .write-area {
   margin: 0px 0px 20px 0px;
-  padding: 5px
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 .purple-btn {
-  background-color: blueviolet !important; 
+  background-color: rgb(255, 2, 103) !important; 
   color: white !important;
   font-weight: bold !important
 }

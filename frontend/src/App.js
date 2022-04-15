@@ -1,14 +1,19 @@
-import React from 'react'
-import TimerChart from './components/TimerChart'
+import React, { useState } from 'react'
+import {
+  Routes, Route,
+} from 'react-router-dom'
+import HomePage from './components/HomePage'
+import SignupPage from './components/SignupPage'
+import LoginPage from './components/LoginPage'
 
 const App = () => {
-  const currentClass = {
-    name: 'CIS120', dayOfWeek: 0, startHour: 11, startMinute: 0, endHour: 12, endMinute: 0,
-  }
+  const x = 5
   return (
-    <>
-      <TimerChart currentClass={currentClass} />
-    </>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/login" element={<LoginPage />} />
+    </Routes>
   )
 }
 export default App

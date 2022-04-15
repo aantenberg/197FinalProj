@@ -3,29 +3,31 @@ import {
   Chart as ChartJS, ArcElement, Tooltip, Legend,
 } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
+import Confetti from 'react-confetti'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-const TimerChart = ({ currentClass }) => {
-  const {
-    name, dayOfWeek, startHour, startMinute, endHour, endMinute,
-  } = currentClass
-  const todayAt11 = new Date()
-  todayAt11.setHours(startHour, startMinute, 0)
-  const todayAt1159 = new Date()
-  todayAt1159.setHours(endHour, endMinute, 0)
+const TimerChart = ({
+  className, startHour, startMinute, endHour, endMinute,
+}) => {
+  const startTime = new Date()
+  startTime.setHours(startHour, startMinute, 0)
+  const endTime = new Date()
+  endTime.setHours(endHour, endMinute, 0)
   const now = new Date()
   // each tick should represent 1/10 second
 
-  const [red, setRed] = useState(Math.round((((now - todayAt11) % 86400000) % 3600000) / 100))
-  const [blue, setBlue] = useState(Math.round((((todayAt1159 - now) % 86400000) % 3600000) / 100))
-  const offset = red + blue > 6000 ? 10 : 1
+  const [timeElapsed, setTimeElapsed] = useState((now - startTime) / 100)
+  const [timeRemaining, setTimeRemaining] = useState(Math.max((endTime - now) / 100, 0))
+  const [confetti, setConfetti] = useState(false)
+  const offset = timeElapsed + timeRemaining > 6000 ? 10 : 1
 
   const setRedBlue = () => {
-    console.log(red)
-    console.log(blue)
-    setRed(red + offset)
-    setBlue(Math.max((blue - offset), 0))
+    setTimeElapsed(timeElapsed + offset)
+    setTimeRemaining(Math.max((timeRemaining - offset), 0))
+    if (timeRemaining === 0) {
+      setConfetti(true)
+    }
   }
 
   useEffect(() => {
@@ -35,20 +37,20 @@ const TimerChart = ({ currentClass }) => {
     // return a clean-up function so that the repetition can be stopped
     // when the component is unmounted
     return () => clearTimeout(intervalID)
-  }, [red, blue])
+  }, [timeElapsed, timeRemaining])
   const data = {
     labels: [],
     datasets: [
       {
         label: '',
-        data: [red, blue],
+        data: [timeElapsed, timeRemaining],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 2, 103, 0.7)',
+          'rgb(255,117,151, 0.7)',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
+          'rgb(255, 2, 103)',
+          'rgb(255,117,151)',
         ],
         borderWidth: 1,
       },
@@ -56,7 +58,17 @@ const TimerChart = ({ currentClass }) => {
   }
   return (
     <div id="card">
-      <h1 style={{ textAlign: 'center' }}>{name}</h1>
+      {confetti
+        ? (
+          <Confetti
+            numberOfPieces={1000}
+            tweenDuration={10000}
+            gravity={0.3}
+            colors={['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800', '#FF5722']}
+            recycle={false}
+          />
+        ) : <></>}
+      <h1 style={{ textAlign: 'center' }}>{className}</h1>
       <Doughnut data={data} options={{ events: [] }} />
     </div>
   )
