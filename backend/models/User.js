@@ -4,7 +4,7 @@ const Class = require('./Class')
 const { Schema, model } = mongoose
 
 const userSchema = new Schema({
-  username: String,
+  username: { type: String, unique: true },
   password: String,
   publicSchedule: Boolean,
   schedule: [{

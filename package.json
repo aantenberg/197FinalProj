@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/aantenberg/197FinalProj#readme",
   "dependencies": {
+    "@daypilot/daypilot-lite-react": "^3.2.1",
     "axios": "^0.26.1",
     "babel-eslint": "^10.1.0",
     "chart.js": "^3.7.1",
