@@ -7,6 +7,16 @@
   width: 95%;
 }
 
+#card-no-width {
+  background-color: #282828;
+  margin: auto auto auto 1rem;
+  border-collapse: separate; 
+  border-radius: 8px !important;
+  padding: 20px;
+  display: inline-flex;
+  flex-direction: row;
+}
+
 #home {
   display: grid;
   grid-template-columns: 2fr 5fr;

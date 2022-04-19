@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const Class = require('./Class')
 
 const { Schema, model } = mongoose
 
