@@ -5,8 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node backend/server.js",
+    "start": "parcel frontend/src/index.html",
     "build": "parcel build frontend/src/index.html",
-    "dev": "concurrently --kill-others \"npm run build\" \"npm run server\""
+    "dev": "concurrently --kill-others \"npm run start\" \"npm run server\""
   },
   "repository": {
     "type": "git",
