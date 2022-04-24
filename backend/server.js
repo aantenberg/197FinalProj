@@ -7,6 +7,8 @@ const AccountRouter = require('./routes/account')
 const ScheduleRouter = require('./routes/schedule')
 
 const app = express()
+
+const PORT = process.env.PORT || 3000
 const MONGO_URI = process.env.MONGODB_URI || 'mongodb+srv://aanten:XqZ5xAD57%40Zx3X8@cluster0.t4t2q.mongodb.net/197FinalProjDatabase?retryWrites=true&w=majority'
 app.use(cookieSession({
   name: 'session',
@@ -37,6 +39,6 @@ mongoose.connect(MONGO_URI, {
   useUnifiedTopology: true,
 })
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
 
 })

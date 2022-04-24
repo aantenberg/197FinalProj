@@ -7,7 +7,9 @@
     "server": "node backend/server.js",
     "start": "parcel frontend/src/index.html",
     "build": "parcel build frontend/src/index.html",
-    "dev": "concurrently --kill-others \"npm run start\" \"npm run server\""
+    "dev": "concurrently --kill-others \"npm run start\" \"npm run server\"",
+    "frontend": "parcel build frontend/src/index.html",
+    "dev2": "npm run frontend && node backend/server.js"
   },
   "repository": {
     "type": "git",
